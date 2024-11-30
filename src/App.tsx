@@ -33,7 +33,7 @@ const App: React.FC = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get<User[]>("/api/users");
+      const response = await axios.get<User[]>("http://localhost:3030/api/users");
       setUsers(response.data);
     } catch (error) {
       console.error("Error fetching users", error);
@@ -48,7 +48,7 @@ const App: React.FC = () => {
   const handleAddUser = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post<User>("/api/users", formData);
+      const response = await axios.post<User>("http://localhost:3030/api/users", formData);
       setUsers((prev) => [...prev, response.data]);
       setModalIsOpen(false);
       setFormData({
